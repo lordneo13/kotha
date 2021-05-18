@@ -1,1 +1,1 @@
-kotha
+kotha is chat web app
