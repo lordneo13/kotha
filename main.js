@@ -1,4 +1,5 @@
 var uname = "Anonymous";
+var dp = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNkyxRDOxzUXZkoNhbt2zTAH6tF2FAIfGqjQ&usqp=CAU";
 var config = {
 apiKey : "AIzaSyD7CiP6D4BcoimrwtzgvdiJNpmFX2pWa5I",
 authDomain : "web-app-db49c.firebaseapp.com",
@@ -16,7 +17,8 @@ var k = keys[i];
 var uname = dataset[k].uname;
 var text = dataset[k].text;
 var time = dataset[k].time;
-document.getElementById("container").innerHTML += "<br><b>"+uname+" : </b>"+text+" <span>"+time+"</span><br>";
+var src = dataset[k].src;
+document.getElementById("container").innerHTML += `<br><b><img style="display:inline-block;width:35px;height:35px;border:none;border-radius:50%;padding-right:5px" src="`+src+`"/>`+uname+` : </b>`+text+` <span>`+time+`</span><br>`;
 }});
 function submit(){
 document.getElementById("container").innerHTML = "";
@@ -31,6 +33,7 @@ var metadata = {
 uname : uname,
 text : text,
 time : time,
+src : dp,
 };
 ref.push(metadata);
 }
@@ -54,4 +57,5 @@ else if(time < 20) m = "good evening";
 else m = "good night";
 document.getElementById("header").innerText = m + " " + uname;
 document.getElementById("dp").src = user.photoURL;
+dp = user.photoURL;
 }});
